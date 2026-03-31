@@ -19,10 +19,16 @@ This repository provides a dockerized version of openconnect. The container acce
 git clone https://github.com/lollipopkit/anyconnect-proxy
 cd anyconnect-proxy
 cp .env.example .env
-# Edit .env and fill in the VPN credentials and host
+# Edit .env and fill in the VPN credentials, host, and optional VPN_GROUP
 vim .env
-docker compose up -d
+docker compose up -d --build
 ```
+
+If your VPN requires a group or realm selection, set `VPN_GROUP` to the exact option shown by the server. For the CUHK log in this issue, the available options were:
+
+* `CUHK(SZ)`
+* `CUHK(SZ)-local`
+* `CUHKSZ-offcampus`
 
 ### Firefox
 
