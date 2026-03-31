@@ -1,0 +1,19 @@
+services:
+  anyconnect-proxy:
+    build:
+      context: .
+    container_name: anyconnect-proxy
+    env_file: .env
+    environment:
+      VPN_USER: ${VPN_USER}
+      VPN_PASSWORD: ${VPN_PASSWORD}
+      VPN_HOST: ${VPN_HOST}
+    ports:
+      - "${LOCAL_PROXY_PORT:-9052}:9052"
+    restart: always
+    volumes:
+      - cisco:/root/.cisco
+
+volumes:
+  cisco:
+    name: cisco
